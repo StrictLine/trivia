@@ -21,17 +21,28 @@ namespace Trivia
         private int _currentPlayer;
         private bool _isGettingOutOfPenaltyBox;
 
+        public LinkedList<string> PopQuestions => _popQuestions;
+
+        public LinkedList<string> ScienceQuestions => _scienceQuestions;
+
+        public LinkedList<string> SportsQuestions => _sportsQuestions;
+
+        public LinkedList<string> RockQuestions => _rockQuestions;
+
         public Game()
         {
+            var questionFactory = new QuestionFactory();
+
             for (var i = 0; i < 50; i++)
             {
-                _popQuestions.AddLast("Pop Question " + i);
-                _scienceQuestions.AddLast(("Science Question " + i));
-                _sportsQuestions.AddLast(("Sports Question " + i));
-                _rockQuestions.AddLast(CreateRockQuestion(i));
+                _popQuestions.AddLast(questionFactory.CreateQuestion("Pop", i));
+                _scienceQuestions.AddLast(questionFactory.CreateQuestion("Science", i));
+                _sportsQuestions.AddLast(questionFactory.CreateQuestion("Sports", i));
+                _rockQuestions.AddLast(questionFactory.CreateQuestion("Rock", i));
             }
         }
 
+        [Obsolete("Replaced by " + nameof(QuestionFactory), true)]
         public string CreateRockQuestion(int index)
         {
             return "Rock Question " + index;
