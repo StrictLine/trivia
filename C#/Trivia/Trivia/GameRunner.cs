@@ -9,12 +9,21 @@ namespace Trivia
         public static void Main(string[] args)
         {
             var aGame = new Game();
+            string[] players = new[] 
+            {
+                "Chet",
+                "Pat",
+                "Sue"
+            };
 
             aGame.Add("Chet");
             aGame.Add("Pat");
             aGame.Add("Sue");
+            var aGame = new Game();
 
             var rand = new Random();
+            foreach (var playerName in players)
+                aGame.Add(playerName);
 
             do
             {
