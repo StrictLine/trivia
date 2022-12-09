@@ -34,6 +34,20 @@ namespace Tests
             Assert.IsTrue(newGame.RockQuestions.All(q => q.StartsWith("Rock")));
         }
 
+        [TestMethod]
+        public void RollTest()
+        {
+            // arrange
+            var newGame = new Game();
+            newGame.Add("TestPlayer");
+
+            // act
+            int rolledNo = newGame.Roll(diceSize: 6);
+
+            // assert
+            Assert.IsTrue(rolledNo >= 1 && rolledNo <= 6, "Number should be in the range");
+        }
+
     }
 }
 

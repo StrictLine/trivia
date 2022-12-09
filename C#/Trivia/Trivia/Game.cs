@@ -71,18 +71,25 @@ namespace Trivia
         }
 
         public void Roll(int roll)
+        public int Roll(int diceSize)
         {
+            var rand = new Random();
+            int rolledNumber = rand.Next(diceSize - 1) + 1;
+
             Console.WriteLine(_players[_currentPlayer] + " is the current player");
             Console.WriteLine("They have rolled a " + roll);
+            Console.WriteLine("They have rolled a " + rolledNumber);
 
             if (_inPenaltyBox[_currentPlayer])
             {
                 if (roll % 2 != 0)
+                if (rolledNumber % 2 != 0)
                 {
                     _isGettingOutOfPenaltyBox = true;
 
                     Console.WriteLine(_players[_currentPlayer] + " is getting out of the penalty box");
                     _places[_currentPlayer] = _places[_currentPlayer] + roll;
+                    _places[_currentPlayer] = _places[_currentPlayer] + rolledNumber;
                     if (_places[_currentPlayer] > 11) _places[_currentPlayer] = _places[_currentPlayer] - 12;
 
                     Console.WriteLine(_players[_currentPlayer]
@@ -100,6 +107,7 @@ namespace Trivia
             else
             {
                 _places[_currentPlayer] = _places[_currentPlayer] + roll;
+                _places[_currentPlayer] = _places[_currentPlayer] + rolledNumber;
                 if (_places[_currentPlayer] > 11) _places[_currentPlayer] = _places[_currentPlayer] - 12;
 
                 Console.WriteLine(_players[_currentPlayer]
@@ -108,6 +116,10 @@ namespace Trivia
                 Console.WriteLine("The category is " + CurrentCategory());
                 AskQuestion();
             }
+
+            return rolledNumber;
+        }
+
         }
 
         private void AskQuestion()

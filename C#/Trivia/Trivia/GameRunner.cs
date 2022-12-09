@@ -28,6 +28,7 @@ namespace Trivia
             do
             {
                 aGame.Roll(rand.Next(5) + 1);
+                aGame.Roll(diceSize: 6);
 
                 if (rand.Next(9) == 7)
                 {
