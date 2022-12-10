@@ -12,7 +12,12 @@ namespace Trivia
             {
                 "Chet",
                 "Pat",
-                "Sue"
+                "Sue",
+
+                "Test1",
+                "Test2",
+                "Test3",
+                "Test4"
             };
 
             var aGame = new Game();

@@ -56,9 +56,11 @@ namespace Trivia
         public bool Add(string playerName)
         {
             _players.Add(playerName);
-            _places[HowManyPlayers()] = 0;
-            _purses[HowManyPlayers()] = 0;
-            _inPenaltyBox[HowManyPlayers()] = false;
+            int playerCount = HowManyPlayers();
+
+            _places[playerCount] = 0;
+            _purses[playerCount] = 0;
+            _inPenaltyBox[playerCount] = false;
 
             Console.WriteLine(playerName + " was added");
             Console.WriteLine("They are player number " + _players.Count);
